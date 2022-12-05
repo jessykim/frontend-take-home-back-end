@@ -1,10 +1,15 @@
-import { Router } from 'express'
-import * as formsCtrl from '../controllers/forms.js'
+import mongoose from 'mongoose'
 
-const router = Router()
+const Schema = mongoose.Schema
 
-/*---------- Public Routes ----------*/
-router.get('/', formsCtrl.index)
-router.post('/', formsCtrl.create)
+const formSchema = new Schema ({
+  name: String,
+  email: String,
+  password: String,
+  occupation: String,
+  state: String
+})
 
-export { router }
+const Form = mongoose.model('Form', formSchema)
+
+export { Form }
